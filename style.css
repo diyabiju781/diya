@@ -11,12 +11,33 @@ body {
 .navbar-custom {
     background: #0a192f; /* Dark navy with transparency */
     padding: 15px;
+    position: fixed;
+}
+.navbar-custom {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it's above other content */
 }
 
+.navbar {
+    background: transparent; /* Initially transparent */
+    transition:  0.4s ease-in-out; /* Smooth transition */
+}
+
+.navbar.scrolled {
+    background-color: (#074485); /* Light background on scroll */
+    backdrop-filter: blur(10px); /* Optional: Adds a blur effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds slight shadow */
+}
+
+
 .navbar-brand {
-    color: #64ffda;
+    color: rgb(199, 104, 164);
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-style: italic;
 }
 
 .navbar-nav .nav-link {
@@ -39,11 +60,29 @@ color: aquamarine;
 }
 
 .hero-title {
-    font-size: 4rem;
-    font-weight: 700;
-    color: #64ffda;
+    font-size: 7rem;
+    font-weight:700;
+    color:  rgb(199, 104, 164);
     animation: fadeIn 1s ease-in-out;
 }
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+#typing-text {
+    font-size: 7rem;
+    font-weight: 700;
+    color: rgb(199, 104, 164); /* Adjust to match your design */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 4px solid #d16ba5; /* Cursor effect */
+    width: fit-content;
+    display: inline-block;
+    animation: blink 0.8s infinite;
+}
+
 
 .hero-subtitle {
     font-size: 1.5rem;
@@ -51,22 +90,10 @@ color: aquamarine;
     margin-top: 10px;
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 3rem;
+        font-size: 7rem;
     }
     .hero-subtitle {
         font-size: 1.2rem;
@@ -97,7 +124,7 @@ color: aquamarine;
 .about h1 {
     font-size: 2.5rem;
     font-weight: 600;
-    color: #64ffda;
+    color: rgb(199, 104, 164);
 }
 
 .about h1 span {
@@ -113,7 +140,7 @@ color: aquamarine;
 .about .cta {
     font-size: 1.2rem;
     font-weight: 500;
-    color: #64ffda;
+    color: rgb(199, 104, 164);
     margin-top: 10px;
 }
 
@@ -127,25 +154,55 @@ color: aquamarine;
     width: 80%;
     max-width: 300px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px #0a192f;
 }
 
 .projects-section {
     padding: 80px 15%;
     background: linear-gradient(to bottom, #074485,#0a192f,);
 }
+/* Initially hide the project sections */
+.project {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* When in view, make them visible */
+.project.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 h2 {
     font-size: 3.5rem;
-    color: #64ffda;
+    color: rgb(199, 104, 164);
     text-align: left;
     margin-bottom: 60px;
     font-weight: 600;
 }
 
+#typing-projects {
+    font-weight: 700; /* Makes it bold */
+}
+
+/* Fade-in animation */
+.fade-text {
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slight upward movement */
+    transition: opacity 1.5s ease-out, transform 1.5s ease-out; 
+}
+
+/* Class to trigger the fade-in */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 h3 {
     font-size: 2.5rem;
-    color: #5eebca;
+    color:  rgb(217, 125, 183);
     text-align: left;
     margin-bottom: 20px;
     font-weight: 600;
@@ -159,7 +216,6 @@ h3 {
     gap: 40px;
     margin-bottom: 50px;
 }
-
 /* Reverse layout for every second project */
 .project.reverse {
     flex-direction: row-reverse;
@@ -170,6 +226,20 @@ h3 {
     width: 45%;
     max-width: 450px;
     border-radius: 10px;
+    box-shadow: 0px 8px 20px black;
+    overflow: hidden; /* This keeps the image from breaking layout */
+    position: relative; /* Ensures the child image stays within bounds */
+}
+
+/* Ensure only the image scales */
+.project-img img {
+    transition: transform 0.3s ease-in-out;
+    display: block;
+    width: 100%;
+}
+
+.project-img:hover img {
+    transform: scale(1.1); /* Only the image scales */
 }
 
 /* Project text */
@@ -189,17 +259,18 @@ h3 {
 }
 
 .btn-primary {
-    background-color: #64ffda;
+    background-color: rgb(199, 104, 164);
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-    color: #00214d;
+    color: white;
+    box-shadow: 0px 8px 20px #0a192f;
     display: inline-block;
 }
 
 .btn-primary:hover {
-    background-color:cornflowerblue;
+    background-color:rgb(2, 213, 213);
 }
 
 /* Responsive Design */
@@ -226,8 +297,8 @@ h3 {
 
 .contact-title {
     font-size: 2.8rem;
-    font-weight: bold;
-    color: #64ffda;
+    font-weight: bold; 
+    color: rgb(217, 125, 183);
     margin-bottom: 10px;
 }
 
@@ -283,7 +354,7 @@ h3 {
 }
 
 .btn-contact:hover {
-    background-color: #72f0c9;
+    background-color: rgb(199, 104, 164);
     color: black;
 }
 
@@ -292,5 +363,6 @@ footer {
     font-size: 14px;
     background: #004080;
     padding: 20px;
-    color: #64ffda;
+    color: white;
 }
+
