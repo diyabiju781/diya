@@ -1,72 +1,61 @@
-/* General Styles */
+/* General Styling */
 body {
-    font-family: 'Inter', sans-serif;
-    background: #012246;
-    color: white;
+    font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
+    background: linear-gradient(to bottom, #0a192f,  #074485);
+    color: #f0f0f0;
 }
 
-/* Navbar */
-.navbar {
-    background: #64ffda;
-    padding: 15px 60px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    font-size: large;
+/* Navigation Bar */
+.navbar-custom {
+    background: #0a192f; /* Dark navy with transparency */
+    padding: 15px;
 }
 
-.navbar a {
-    color: #023265;
-    font-weight: bold;
-}
 .navbar-brand {
-    font-size: 1.8rem;  /* Increases size */
-    font-weight: 700;   /* Makes it bold */
-    color: #00274D;     /* Optional: Ensures color consistency */
+    color: #64ffda;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
 
-.navbar a:hover {
-    color: cornflowerblue;
+.navbar-nav .nav-link {
+    color: white;
+    margin-left: 15px;
+    transition: color 0.3s ease;
 }
 
+.navbar-nav .nav-link:hover {
+color: aquamarine;
+}
 
 /* Hero Section */
 .hero {
-    min-height: 700px;
-    width: 100%; /* Ensure it takes full width */
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    color:#64ffda; 
     text-align: center;
-    background: linear-gradient(to bottom, #074485, #012246);
-    padding: 20px;
 }
-/* Hero Section Animations */
+
 .hero-title {
-    text-align: center;
-    font-size: 10rem;
-    font-weight: 1000;
-    font-style: italic;
-    font-display: serif;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 2s ease-out forwards;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #64ffda;
+    animation: fadeIn 1s ease-in-out;
 }
 
-
-/* Hero Title Animation */
-.hero-title {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 2s ease-out forwards;
+.hero-subtitle {
+    font-size: 1.5rem;
+    color: #a8b2d1;
+    margin-top: 10px;
 }
 
-@keyframes fadeInUp {
+/* Fade-in Animation */
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(-20px);
     }
     to {
         opacity: 1;
@@ -74,20 +63,14 @@ body {
     }
 }
 
-/* Animated Text Styling */
-.animated-text {
-    font-family: 'Playfair display', cursive; /* Decorative Font */
-    font-size: 3rem;
-    background: linear-gradient(45deg, #72f0c9, #3ec1d3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    animation: wave 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes wave {
-    0% { transform: scale(2); }
-    100% { transform: scale(2.1); }
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
 }
 
 /* Container */
@@ -149,7 +132,7 @@ body {
 
 .projects-section {
     padding: 80px 15%;
-    background: linear-gradient(to bottom, #012246,  #074485);
+    background: linear-gradient(to bottom, #074485,#0a192f,);
 }
 
 h2 {
@@ -237,7 +220,7 @@ h3 {
 .contact-container {
     text-align: center;
     padding: 50px 50px;
-    background: linear-gradient(to bottom, #074485, #012246);
+    background: linear-gradient(to bottom, #0a192f);
     color: whitesmoke;
 }
 
@@ -260,7 +243,7 @@ h3 {
     margin: 0 auto;
     background-color:whitesmoke;
     padding: 30px;
-    color: #012246;
+    color: #0a192f;
     border-radius: 12px;
     box-shadow: 0px 8px 20px black;
 }
@@ -285,7 +268,7 @@ h3 {
     border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s ease;
-    color: #012246;
+    color:#0a192f;
 }
 
 .btn-contact {
@@ -311,4 +294,3 @@ footer {
     padding: 20px;
     color: #012246;
 }
-
